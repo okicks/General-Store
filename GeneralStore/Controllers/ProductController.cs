@@ -1,17 +1,14 @@
 ﻿using GeneralStore.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GeneralStore.Controllers
 {
     public class ProductController : Controller
     {
-        private ApplicationDbContext _db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Product
         public ActionResult Index()
@@ -41,12 +38,16 @@ namespace GeneralStore.Controllers
         public ActionResult Delete(int? id)
         {
             if (id == null)
+            {
                 return (new HttpStatusCodeResult(HttpStatusCode.BadRequest));
+            }
 
             Product product = _db.Products.Find(id);
 
             if (product == null)
+            {
                 return HttpNotFound();
+            }
 
             return View(product);
         }
@@ -58,7 +59,9 @@ namespace GeneralStore.Controllers
             Product product = _db.Products.Find(id);
 
             if (product == null)
+            {
                 return HttpNotFound();
+            }
 
             _db.Products.Remove(product);
             _db.SaveChanges();
@@ -69,19 +72,23 @@ namespace GeneralStore.Controllers
         public ActionResult Edit(int? id)
         {
             if (id == null)
+            {
                 return (new HttpStatusCodeResult(HttpStatusCode.BadRequest));
+            }
 
             Product product = _db.Products.Find(id);
 
             if (product == null)
+            {
                 return HttpNotFound();
+            }
 
             return View(product);
         }
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit (Product product)
+        public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {
@@ -96,12 +103,16 @@ namespace GeneralStore.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null)
+            {
                 return (new HttpStatusCodeResult(HttpStatusCode.BadRequest));
+            }
 
             Product product = _db.Products.Find(id);
 
             if (product == null)
+            {
                 return HttpNotFound();
+            }
 
             return View(product);
         }

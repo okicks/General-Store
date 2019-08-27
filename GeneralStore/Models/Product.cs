@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GeneralStore.Models
 {
@@ -12,18 +8,18 @@ namespace GeneralStore.Models
         public int ProductID { get; set; }
 
         [Required]
-        [Display (Name = "Product Name")]
+        [Display(Name = "Product Name")]
         public string Name { get; set; }
 
         [Required]
         public decimal Price { get; set; }
 
         [Required]
-        [Display (Name = "Number in Stock")]
+        [Display(Name = "Number in Stock")]
         public int InventoryCount { get; set; }
 
         [Required]
-        [Display (Name = "Is it Food?")]
+        [Display(Name = "Is it Food?")]
         public bool IsFood { get; set; }
     }
 }
