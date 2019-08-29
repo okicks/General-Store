@@ -19,7 +19,7 @@ namespace GeneralStore.Controllers
         public ActionResult Create()
         {
             ViewBag.CustomerId = new SelectList(_db.Customers.ToList(), "CustomerId", "FullName");
-            ViewBag.ProductID = new SelectList(_db.Products.ToList(), "ProductID", "Name");
+            ViewBag.ProductId = new SelectList(_db.Products.ToList(), "ProductId", "Name");
 
             return View();
         }
@@ -74,6 +74,9 @@ namespace GeneralStore.Controllers
 
         public ActionResult Edit(int? id)
         {
+            ViewBag.CustomerId = new SelectList(_db.Customers.ToList(), "CustomerId", "FullName");
+            ViewBag.ProductId = new SelectList(_db.Products.ToList(), "ProductId", "Name");
+
             if (id == null)
             {
                 return (new HttpStatusCodeResult(HttpStatusCode.BadRequest));

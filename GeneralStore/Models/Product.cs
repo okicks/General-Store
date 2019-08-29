@@ -5,7 +5,7 @@ namespace GeneralStore.Models
     public class Product
     {
         [Key]
-        public int ProductID { get; set; }
+        public int ProductId { get; set; }
 
         [Required]
         [Display(Name = "Product Name")]
